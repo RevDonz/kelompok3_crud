@@ -6,6 +6,14 @@ interface IProduct {
 }
 
 const Product = ({ product }: IProduct) => {
+  const handleDelete = () => {
+    if (confirm('Hapus data?')) {
+      alert('data dihapus');
+    } else {
+      alert('data tidak jadi dihapus');
+    }
+  };
+
   return (
     <div className='bg-slate-700 p-3 rounded-lg text-white flex flex-col justify-between'>
       <div className='relative h-48 bg-white rounded-md'>
@@ -21,7 +29,10 @@ const Product = ({ product }: IProduct) => {
         <p>$ {product.price}</p>
       </div>
       <div className='flex gap-3 mt-3'>
-        <button className='px-3 py-1 text-red-500 bg-white hover:bg-red-500 hover:text-white border-2 border-red-500 rounded-md active:scale-105 transition-all'>
+        <button
+          className='px-3 py-1 text-red-500 bg-white hover:bg-red-500 hover:text-white border-2 border-red-500 rounded-md active:scale-105 transition-all'
+          onClick={handleDelete}
+        >
           Remove
         </button>
         <button className='px-3 py-1 text-green-500 bg-white hover:bg-green-500 hover:text-white border-2 border-green-500 rounded-md active:scale-105 transition-all'>

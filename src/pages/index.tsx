@@ -15,10 +15,12 @@ const Home = () => {
         username: username,
         password: password,
       });
+
       if (res.status === 200) {
         alert(`Hello ${res.data.firstName} ${res.data.lastName}`);
         router.push('/products');
       }
+      
     } catch (e) {
       console.log(e);
     }
