@@ -29,7 +29,6 @@ const Home = () => {
 
   useEffect(() => {
     fetchProducts();
-    console.log(123);
   }, []);
 
   return (
