@@ -1,10 +1,11 @@
-import Product from '@/components/product';
-import axios from 'axios';
-import Link from 'next/link';
+import Product from "@/components/product";
+import axios from "axios";
+import Link from "next/link";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export type ProductType = {
+  id: number;
   title: string;
   thumbnail: string;
   price: string;
@@ -15,7 +16,7 @@ const Home = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios('https://dummyjson.com/products', {
+      const res = await axios("https://dummyjson.com/products", {
         params: {
           limit: 10,
         },
@@ -33,15 +34,15 @@ const Home = () => {
 
   return (
     <>
-      <div className='flex justify-between items-center mb-5'>
-        <p className='text-4xl text-white font-semibold'>Products</p>
-        <Link href={'/products/add'}>
-          <button className='px-3 py-2 text-white bg-blue-500 hover:bg-blue-600 rounded-md active:scale-105 transition-all'>
+      <div className="flex justify-between items-center mb-5">
+        <p className="text-4xl text-white font-semibold">Products</p>
+        <Link href={"/products/add"}>
+          <button className="px-3 py-2 text-white bg-blue-500 hover:bg-blue-600 rounded-md active:scale-105 transition-all">
             Add New Product
           </button>
         </Link>
       </div>
-      <div className='grid grid-cols-2 md:grid-cols-4 gap-5'>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
         {products.map((product: ProductType, index) => {
           return <Product product={product} key={index} />;
         })}
