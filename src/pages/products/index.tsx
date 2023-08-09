@@ -5,10 +5,12 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export type ProductType = {
+  id: number;
   title: string;
   thumbnail: string;
   price: string;
 };
+
 
 const Home = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
@@ -32,7 +34,7 @@ const Home = () => {
   }, []);
 
   return (
-    <>
+    <div>
       <div className='flex justify-between items-center mb-5'>
         <p className='text-4xl text-white font-semibold'>Products</p>
         <Link href={'/products/add'}>
@@ -46,7 +48,7 @@ const Home = () => {
           return <Product product={product} key={index} />;
         })}
       </div>
-    </>
+    </div>
   );
 };
 
