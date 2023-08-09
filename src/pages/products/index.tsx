@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export type ProductType = {
+  id: number;
   title: string;
   thumbnail: string;
   price: string;
@@ -37,7 +38,7 @@ const Home = () => {
         <p className='text-4xl text-white font-semibold'>Products</p>
         <Link href={'/products/add'}>
           <button className='px-3 py-2 text-white bg-blue-500 hover:bg-blue-600 rounded-md active:scale-105 transition-all'>
-            Add New Productsss
+            Add New Product
           </button>
         </Link>
       </div>
