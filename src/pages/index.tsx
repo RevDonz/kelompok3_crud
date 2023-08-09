@@ -6,6 +6,7 @@ declare global {
   interface Window {
     modal_success: any;
     modal_failed: any;
+    modal_edit: any;
   }
 }
 
@@ -26,7 +27,6 @@ const Home = () => {
         window.modal_success.showModal();
         console.log(res);
       }
-      
     } catch (e) {
       window.modal_failed.showModal();
       console.log(e);

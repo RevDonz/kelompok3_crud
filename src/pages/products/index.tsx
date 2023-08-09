@@ -11,7 +11,6 @@ export type ProductType = {
   price: string;
 };
 
-
 const Home = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
 
@@ -22,6 +21,7 @@ const Home = () => {
           limit: 10,
         },
       });
+      console.log(res);
 
       setProducts(res.data.products);
     } catch (err) {
@@ -44,7 +44,10 @@ const Home = () => {
         </Link>
       </div>
       <div className='grid grid-cols-2 md:grid-cols-4 gap-5'>
-        {products.map((product: ProductType, index) => {
+        {/* {products.map((product, index) => {
+          return <Product product={product} key={index} />;
+        })} */}
+        {products.map((product, index) => {
           return <Product product={product} key={index} />;
         })}
       </div>
