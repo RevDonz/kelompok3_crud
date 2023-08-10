@@ -1,18 +1,11 @@
 import axios from 'axios';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
-
-declare global {
-  interface Window {
-    modal_success: any;
-    modal_failed: any;
-    modal_edit: any;
-  }
-}
 
 const Home = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const router = useRouter();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -22,13 +15,11 @@ const Home = () => {
         username: username,
         password: password,
       });
-
       if (res.status === 200) {
-        window.modal_success.showModal();
-        console.log(res);
+        alert(`Hello ${res.data.firstName} ${res.data.lastName}`);
+        router.push('/products');
       }
     } catch (e) {
-      window.modal_failed.showModal();
       console.log(e);
     }
   };
@@ -71,26 +62,6 @@ const Home = () => {
           Go To My Account
         </button>
       </form>
-      <dialog id='modal_success' className='modal'>
-        <form method='dialog' className='modal-box'>
-          <h3 className='font-bold text-lg'>Login Berhasil</h3>
-          <p className='py-4'>Hallo anda berhasil login!</p>
-          <div className='modal-action'>
-            <Link href={'/products'}>
-              <button className='btn'>OK</button>
-            </Link>
-          </div>
-        </form>
-      </dialog>
-      <dialog id='modal_failed' className='modal'>
-        <form method='dialog' className='modal-box'>
-          <h3 className='font-bold text-lg'>Login Gagal</h3>
-          <p className='py-4'>Username atau Password salah!</p>
-          <div className='modal-action'>
-            <button className='btn'>OK</button>
-          </div>
-        </form>
-      </dialog>
     </div>
   );
 };
